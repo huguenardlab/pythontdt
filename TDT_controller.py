@@ -180,8 +180,8 @@ def onestim() :
           N = ttank.ReadEventsSimple('SSwp')
           data = ttank.ParseEvV(0, N)
           npdata = np.array(data)
-          
-          
+          #print( np.shape(npdata))
+          thissweep=[]
           if np.size(npdata)>1:
             if np.shape(npdata)[1]==expectedsweeps:
               sweepobtained=1
@@ -189,7 +189,11 @@ def onestim() :
               lastcolumn=npdatashape[1]
               firstcolumn=lastcolumn-16
               thissweep=npdata[:,firstcolumn:lastcolumn]
-            print(np.shape(thissweep))
+              newrange=range(15,0,-1)
+              newrange=np.insert(newrange,0,0)
+              #print(newrange)
+              thissweep=thissweep[:,newrange]
+              
               
         #baseline offset
         if baselineOffset.get()==1:
@@ -312,7 +316,7 @@ stim=0
 
 r=0;
 window.title("Python TDT Controller")
-window.geometry('300x400')
+window.geometry('300x500')
 
 #lbldn = Label(window, text=window.directoryname)
 #lbldn.grid(column=0, row=r,columnspan=2)
@@ -421,16 +425,21 @@ lble.grid(column=0, row=r)
 exps = Spinbox(window, from_=1, to=10, width=5,textvariable=exp)
 exps.grid(column=1,row=r)
 
-r+=1
-Bipolar= IntVar()
-Bipolar.set(1)
-ckbtn = Checkbutton(window,text="Bipolar",variable=Bipolar)
-ckbtn.grid(column=1,row=r)
-
 PreviewMode= IntVar()
 PreviewMode.set(1)
 previewBtn = Checkbutton(window, text="Preview Mode",variable=PreviewMode)
 previewBtn.grid(column=0, row=r)
+
+r+=1
+Bipolar= IntVar()
+Bipolar.set(1)
+ckbtn = Checkbutton(window,text="Bipolar",variable=Bipolar)
+ckbtn.grid(column=0,row=r)
+r+=1
+baselineOffset= IntVar()
+baselineOffset.set(0)
+offsetBtn = Checkbutton(window, text="Baseline Offset",variable=baselineOffset)
+offsetBtn.grid(column=0, row=r)
 
 plotMode= IntVar()
 plotMode.set(0)
@@ -444,11 +453,7 @@ plotModeCSD.set(0)
 plotCSDBtn = Checkbutton(window, text="Plot CSD",variable=plotModeCSD)
 plotCSDBtn.grid(column=1, row=r)
 
-r+=1
-baselineOffset= IntVar()
-baselineOffset.set(0)
-offsetBtn = Checkbutton(window, text="Baseline Offset",variable=baselineOffset)
-offsetBtn.grid(column=1, row=r)
+
 
 r+=1
 record= IntVar()

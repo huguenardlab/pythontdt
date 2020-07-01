@@ -43,7 +43,7 @@ def plotTDTdata(npdata,stimDelay,plotstruct):
     #print (np.shape(npdata))    
       autoscalept1= int((stimdelay+postStimWait)/Si)
       autoscalept2=int((stimdelay+postStimDisplay)/Si)
-      colormap=['red','blue','yellow','green','purple','white','cyan','magenta','orange','gold','skyblue','grey','seagreen','navy','pink','turquoise']
+      colormap=['red','blue','yellow','green','purple','white','cyan','magenta','orange','gold','skyblue','grey','seagreen','lavender','pink','turquoise']
 
     #print(autoscalept1)
     #print(autoscalept2)
@@ -51,13 +51,13 @@ def plotTDTdata(npdata,stimDelay,plotstruct):
       as1=np.amin(np.amin(npdatab[autoscalept1:autoscalept2,:]))
       as2=np.amax(np.amax(npdatab[autoscalept1:autoscalept2,:]))
     
-      fig,ax=plt.subplots(ch,1, sharex=True,gridspec_kw={'hspace': 0})
+      fig,ax=plt.subplots(ch,1, sharex=True, sharey= True, gridspec_kw={'hspace': 0})
       
       
 
       for i in range(ch):
         #line[i] = ax[i].plot(times, npdatab[i,:],colormap[i],linewidth=.5)
-        line[i] = Line2D(times, npdatab[:,i],linewidth=.5,color=colormap[i])
+        line[i] = Line2D(times, npdatab[:,i],linewidth=.8,color=colormap[i])
         #ax[i].plot(times, npdatab[i,:],colormap[i],linewidth=.5)
         ax[i].add_line(line[i])
         ax[i].set_ylim ((as1,as2))

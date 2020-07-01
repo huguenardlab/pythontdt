@@ -43,7 +43,7 @@ def plotCSDdata(npdata,stimDelay,plotstructCSD):
     #print (np.shape(npdata))    
       autoscalept1= int((stimdelay+postStimWait)/Si)
       autoscalept2=int((stimdelay+postStimDisplay)/Si)
-      colormap=['red','blue','yellow','green','purple','white','cyan','magenta','orange','gold','skyblue','grey','seagreen','navy','pink','turquoise']
+      colormap=['red','blue','yellow','green','purple','white','cyan','magenta','orange','gold','skyblue','grey','seagreen','lavender','pink','turquoise']
 
     #print(autoscalept1)
     #print(autoscalept2)
@@ -57,7 +57,7 @@ def plotCSDdata(npdata,stimDelay,plotstructCSD):
 
       for i in range(ch):
         #line[i] = ax[i].plot(times, npdatab[i,:],colormap[i],linewidth=.5)
-        line[i] = Line2D(times, dyyl[:,i],linewidth=.5,color=colormap[i])
+        line[i] = Line2D(times, dyyl[:,i],linewidth=.8,color=colormap[i])
         #ax[i].plot(times, npdatab[i,:],colormap[i],linewidth=.5)
         ax[i].add_line(line[i])
         ax[i].set_ylim ((as1,as2))

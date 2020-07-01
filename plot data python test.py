@@ -31,13 +31,13 @@ stimdelay=0.006 #need to be extract from TDT
 postStimWait=0.002
 preStimDelay=0.001 
 postStimDisplay=0.03 
-endStim= int((0.005+0.001)/Si)  
+endStim= int((0.006+0.001)/Si)  
                     
         
 autoscalept1= int((stimdelay+postStimWait)/Si)
 autoscalept2=int((stimdelay+postStimDisplay)/Si)
 colormap=['red','blue','yellow','green','purple','white','cyan','magenta','orange','gold','skyblue','grey','seagreen','navy','pink','turquoise']
-npdatab[int(0.005/Si):endStim,:]=0  #we want to blank the stim artifact 
+npdatab[0:endStim,:]=float('NaN') #we want to blank the stim artifact 
 
 
 
