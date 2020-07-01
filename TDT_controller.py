@@ -18,6 +18,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def clickrecord():
+   # make minor change here to test git update
     global run
     global stim
     global isiT
