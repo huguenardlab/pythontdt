@@ -1,2 +1,22 @@
 micedb.py
 __pycache__/*
+
+# database login, see db_login_example.ini
+db_login.ini
+
+# old code and backups are kept on the share, not in git
+old/
+backup/
+
+# editor backups and Mac metadata
+*~
+*.~*~
+\#*#
+._*
+.DS_Store
+*.pyc
+
+# scratch output
+*.diff
+foo.csv
+tdtVsIntan
